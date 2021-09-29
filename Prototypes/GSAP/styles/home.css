@@ -168,14 +168,14 @@ nav ul li a {
     justify-content: space-evenly;
 
     position: absolute;
-    right: -8rem;
+    right: -10rem;
     bottom: 2rem;
 
 
 }
 
 .images div {
-    width: 20rem;
+    width: 18rem;
     margin-right: 1rem;
     overflow: hidden;
 }
@@ -203,9 +203,13 @@ nav ul li a {
     font-weight: bold;
     letter-spacing: 3px;
     height: 20px;
-    width: 120px;
+    width: 12em;
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .socials a .hidetext {
