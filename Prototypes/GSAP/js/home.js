@@ -1,50 +1,52 @@
-window.onload = () => {
-    // const tl = gsap.timeline();
+// Inspired by following video => 
 
-    // tl.from('.text h1 .hidetext', {
-    //         duration: 1.5,
-    //         y: '100%',
-    //         ease: 'power4.out'
-    //     })
-    //     .from('.images div img', {
-    //         duration: 1,
-    //         x: 100,
-    //         opacity: 0,
-    //         stagger: 0.5,
-    //     }, "<")
-    //     .from('nav', {
-    //         duration: 1,
-    //         padding: 0,
-    //         width: 0,
-    //         ease: 'power4.in'
-    //     }, "<").from('nav ul li a', {
-    //         duration: 1.5,
-    //         x: -100,
-    //         opacity: 0,
-    //         ease: 'back',
-    //         stagger: 0.2
-    //     }, ).from('.socials a .hidetext', {
-    //         duration: 1.5,
-    //         y: 100,
-    //         stagger: 0.3
-    //     }, "<")
-    //     .from('.text h2 .hidetext', {
-    //         duration: 1.5,
-    //         y: '100%',
-    //         ease: 'power4.out'
-    //     }, "<+0.5").from('.text h3 .hidetext', {
-    //         duration: 1.5,
-    //         y: '100%',
-    //         ease: 'power4.out'
-    //     }, "<")
-    //     .from('.text p .hidetext', {
-    //         duration: 1.5,
-    //         y: '120%',
-    //         ease: 'power4.out'
-    //     }, "<+0.5")
-    //     .set('.images div', {
-    //         overflow: 'visible'
-    //     })
+window.onload = () => {
+    const tl = gsap.timeline(); 
+
+    tl.from('.text h1 .hidetext', { // FROM(): Animates from the given parameters.
+            duration: 1.5,
+            y: '100%',
+            ease: 'power4.out' //EASING: you can use multiple types of easing provided by GSAP
+        })
+        .from('.images div img', { 
+            duration: 1,
+            x: 100,
+            opacity: 0,
+            stagger: 0.5,   // STAGGERING: When you select multiple target at once you can stagger them = (delay them)
+        }, "<") // the from command also allows a parameter that defines when the animation should start.
+        .from('nav', {
+            duration: 1,
+            padding: 0,
+            width: 0,
+            ease: 'power4.in'
+        }, "<").from('nav ul li a', {
+            duration: 1.5,
+            x: -100,
+            opacity: 0,
+            ease: 'back',
+            stagger: 0.2
+        }, ).from('.socials a .hidetext', {
+            duration: 1.5,
+            y: 100,
+            stagger: 0.3
+        }, "<")
+        .from('.text h2 .hidetext', {
+            duration: 1.5,
+            y: '100%',
+            ease: 'power4.out'
+        }, "<+0.5").from('.text h3 .hidetext', {
+            duration: 1.5,
+            y: '100%',
+            ease: 'power4.out'
+        }, "<")
+        .from('.text p .hidetext', {
+            duration: 1.5,
+            y: '120%',
+            ease: 'power4.out'
+        }, "<+0.5")
+        .set('.images div', { // SET(): You can also set some css properties through GSAP using the set(). it is sort of an animation with zero duration.
+            overflow: 'visible'
+        })
 
     const nav_anim = gsap.timeline({
         paused: true,
