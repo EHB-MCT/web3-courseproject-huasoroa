@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import isDocent from './reducers'
+import docentReducer from './reducers/isDocent'
+import counterReducer from './reducers/Counter'
 
 export default configureStore({
   reducer: {
-      isDocent
+      isDocent : docentReducer,
+      counter : counterReducer
   },
+  
+
 })

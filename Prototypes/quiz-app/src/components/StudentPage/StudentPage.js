@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import firebase from '../../firebase';
+import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { makeStudent } from '../../store/actions';
 
 export default function StudentPage() {
 
@@ -8,12 +10,18 @@ export default function StudentPage() {
 
     const [name, setName] = useState('')
     const [room, setRoom] = useState('')
+    const history = useHistory()
+    const dispatch= useDispatch()
 
     const handleForm = e => {
         e.preventDefault()
+        dispatch(makeStudent())
 
-        
-
+        if (room === "") {
+            alert('You need to input something bro')
+        }else{
+            history.push(`/Room/${room}`)
+        }
     }
 
 
@@ -29,6 +37,7 @@ export default function StudentPage() {
                     <input onChange={e => setRoom(e.target.value)} type='text' name="room" value={room} autoComplete='off' />
                     <button type="submit" id='submit' onClick={handleForm}>Submit</button>
                 </form>
+
             </div>
         )
     }
