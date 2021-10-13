@@ -20,7 +20,7 @@ export default function StudentPage() {
         if (room === "") {
             alert('You need to input something bro')
         }else{
-            history.push(`/Room/${room}`)
+            history.push(`/Room/${room.toUpperCase()}`)
         }
     }
 

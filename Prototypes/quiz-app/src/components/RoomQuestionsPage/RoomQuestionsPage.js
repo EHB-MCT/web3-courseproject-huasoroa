@@ -10,35 +10,57 @@ export default function RoomQuestionsPage(props) {
 
     const questionsRef = collection(firebase,'rooms', props.id ,'questions')
     
-    useEffect(() =>  getQuestions() , [])
-
-    const getQuestions = async () => {
+    useEffect(() =>  {
         setLoading(true);
         let items = []
-        onSnapshot( questionsRef , querySnapshot => {
+        const unsub = onSnapshot( questionsRef , querySnapshot => {
             querySnapshot.forEach(doc => {
-                console.log(doc.data())
-                items.push(doc.data())
+                items.push({id:doc.id,...doc.data()})
             })
-            setQuestions(items)
+            const uniqueQuestions = items.filter((val, id, array) => id === array.findIndex(o => o.id === val.id)
+            ) 
+            setQuestions(uniqueQuestions)
         })
         setLoading(false)
-    }
+        return () => unsub();
+    }, [])
 
+    useEffect(() => {
+        console.log(questions)
+        return () => {
+            
+        }   
+    }, [questions])
+
+    const displayIframe = (url, type) => {
+        if (type === 'text') {
+            return
+        }else{
+            return (
+                <div>
+                    <iframe width="640" height="360" src={url} allowFullScreen frameBorder="0" title="Title"></iframe>
+                </div>
+                        ) 
+        }
+    }
 
     return (
         <div>
-            {loading?"Please wait, page is loading":""}
-            <h1>Your tag is : #{props.id}</h1>
+            {loading?"Please wait, page is loading":(
+                <div>
+                <h1>Your tag is : #{props.id}</h1>
             {
                 questions.map(question => (
                     <div key={question.id}>
-                        <h1>{question.data.title}</h1>
-                        <h2>{question.data.type}</h2>
+                        <h1>{question.title}</h1>
+                        <h2>{question.type}</h2>
+                        {displayIframe(question.url,question.type)}
                         <input type="text" placeholder="Type your answer here"></input>
                     </div>
                 ))
             }
-        </div>
+            </div>
+            )}
+            </div>
     )
 }
