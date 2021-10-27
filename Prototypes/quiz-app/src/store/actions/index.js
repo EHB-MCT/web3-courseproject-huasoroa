@@ -1,20 +1,12 @@
-export const makeDocent = () => {
-        return {
-            type: 'DOCENT'
-        }
-}
-export const makeStudent = () => {
-        return {
-            type: 'STUDENT'
-        }
-}
-export const increment = () => {
-        return {
-            type: 'INCREMENT'
-        }
-}
-export const decrement = () => {
-        return {
-            type: 'DECREMENT'
-        }
-}
+export const makeDocent = () => ({
+  type: 'DOCENT',
+});
+export const makeStudent = () => ({
+  type: 'STUDENT',
+});
+export const increment = () => ({
+  type: 'INCREMENT',
+});
+export const decrement = () => ({
+  type: 'DECREMENT',
+});
